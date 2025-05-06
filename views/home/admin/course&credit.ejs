@@ -1,0 +1,166 @@
+<!-- Assumes Bootstrap 5 CSS and Bootstrap Icons CSS are loaded -->
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  /* Optional: Add a bit more pronounced rounding if needed */
+  .content-box {
+    border-radius: 0.85rem; /* Slightly more rounding for the outer white boxes */
+    background-color: white;
+  }
+  .inner-pink-box {
+    border-radius: 0.6rem; /* Rounding for the inner pink boxes */
+    background-color: #dc586d; /* Pinkish-red color */
+    color: white;
+  }
+  .course-list-scroll {
+    max-height: 350px; /* Adjust height as needed */
+    overflow-y: auto;
+    padding-right: 0.5rem; /* Add space for scrollbar */
+  }
+  /* Optional: Style scrollbar for webkit browsers */
+  .course-list-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  .course-list-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .course-list-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+  .course-list-scroll::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+  }
+</style>
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #4c1d3d;
+        font-weight: 500;
+        font-size: 2.5rem;
+        text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.595);
+      "
+    >
+      Sajib Chatterjee
+    </h2>
+    <div class="container py-5">
+      <div class="row g-4 justify-content-center">
+        <!-- g-4 adds gutters -->
+
+        <!-- Left Column: Course List -->
+        <div class="col-lg-7">
+          <div class="content-box p-3 shadow-sm h-100">
+            <!-- h-100 tries to match height if possible -->
+            <div class="course-list-scroll">
+              <!-- Course Item START (Repeat this block) -->
+              <!-- In EJS: -->
+              <div
+                class="d-flex align-items-center p-3 rounded mb-3 inner-pink-box"
+              >
+                <i class="bi bi-mortarboard fs-3 me-3"></i>
+                <!-- Academic Icon -->
+                <div>
+                  <span class="fw-bold d-block"
+                    >Title : Algorithms Labratory</span
+                  >
+                  <span class="fw-bold d-block mt-1"
+                    >Course Code : CSE 2202</span
+                  >
+
+                  <span class="fw-bold d-block mt-1">Course Credit : 1.5</span>
+                </div>
+                <!-- Delete button removed as it's not in this image -->
+              </div>
+              <!-- Course Item END -->
+              <!-- In EJS:-->
+
+              <!-- Static Example Items -->
+              <div
+                class="d-flex align-items-center p-3 rounded mb-3 inner-pink-box"
+              >
+                <i class="bi bi-mortarboard fs-3 me-3"></i>
+                <div>
+                  <span class="fw-bold d-block"
+                    >Title : Algorithms Labratory</span
+                  >
+                  <span class="fw-bold d-block mt-1"
+                    >Course Code : CSE 2202</span
+                  >
+                  <span class="fw-bold d-block mt-1">Course Credit : 1.5</span>
+                </div>
+              </div>
+              <div
+                class="d-flex align-items-center p-3 rounded mb-3 inner-pink-box"
+              >
+                <i class="bi bi-mortarboard fs-3 me-3"></i>
+                <div>
+                  <span class="fw-bold d-block"
+                    >Title : Algorithms Labratory</span
+                  >
+                  <span class="fw-bold d-block mt-1"
+                    >Course Code : CSE 2202</span
+                  >
+
+                  <span class="fw-bold d-block mt-1">Course Credit : 1.5</span>
+                </div>
+              </div>
+              <!-- Add more static items if needed for testing scroll -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Summary -->
+        <div class="col-lg-5">
+          <!-- Top Summary Box (Total Courses) -->
+          <div class="content-box p-3 shadow-sm mb-4">
+            <div class="p-3 rounded d-flex align-items-center inner-pink-box">
+              <i class="bi bi-speedometer2 fs-4 me-3"></i>
+              <span class="fw-bold fs-5">Total Courses: 4</span>
+            </div>
+          </div>
+
+          <!-- Bottom Summary Box (Credits) -->
+          <div class="content-box p-3 shadow-sm">
+            <div class="p-3 rounded inner-pink-box">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-speedometer2 fs-4 me-3"></i>
+                <span class="fw-bold fs-5">Theory Credit : 7</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-speedometer2 fs-4 me-3"></i>
+                <span class="fw-bold fs-5">Sessional Credit : 1.5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- /row -->
+    </div>
+    <!-- Assumes Bootstrap 5 CSS is loaded -->
+
+    <div class="d-flex justify-content-center align-items-center gap-3 p-4">
+      <!-- Adjust gap-* for spacing, p-* for surrounding padding -->
+
+      <!-- Add Preferred Time Button -->
+      <a href="/add-time">
+        <button
+          type="button"
+          class="btn btn-lg fw-bold text-white shadow-sm"
+          style="
+            background-color: #af40af;
+            border-color: #af40af;
+            border-radius: 0.75rem;
+            padding: 0.6rem 1.5rem;
+          "
+        >
+          Add Preferred Time
+        </button></a
+      >
+    </div>
+  </div>
+</div>
+<!-- /container -->

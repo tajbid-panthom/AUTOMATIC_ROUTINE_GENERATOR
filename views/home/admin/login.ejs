@@ -1,0 +1,194 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  main {
+    background-color: #111933;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 50px;
+    margin: 0px auto 0;
+    max-width: 800px;
+    overflow: hidden;
+  }
+
+  main > * {
+    grid-row: 1 / 2;
+  }
+
+  .login,
+  .signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 40% 0;
+    color: #fff;
+    font-size: 30px;
+    background: #cf0b4c;
+    transition: all 0.5s ease;
+  }
+
+  .login > button,
+  .signup > button {
+    border: none;
+    background-color: #fff;
+  }
+
+  .login {
+    grid-column: 1 / 2;
+  }
+
+  .signup {
+    grid-column: 2 / 3;
+  }
+
+  .login-form {
+    grid-column: 1 / 2;
+    transform: translateX(-100%);
+  }
+
+  .signup-form {
+    grid-column: 2 / 3;
+    transform: translateX(100%);
+  }
+
+  form {
+    padding: 30px 20px;
+    max-width: 500px;
+    height: 520px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.5s;
+    background: linear-gradient(to bottom, #eeaeca 0%, #94bbe9 100%);
+  }
+
+  form.active {
+    transform: translateX(0);
+  }
+
+  .back-layer {
+    display: grid;
+    grid-column: 1 / 3;
+    grid-template-columns: 1fr 1fr;
+    clip-path: inset(0 50% 0 0);
+    background: #fff;
+    z-index: 5;
+    transition: clip-path 0.3s;
+  }
+
+  .login-label {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  input {
+    display: block;
+    height: 40px;
+    width: 300px;
+    padding-left: 15px;
+    margin: 30px 0;
+    border: 2px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: #cf0b4c;
+  }
+
+  label {
+    font-weight: normal;
+  }
+
+  button {
+    background: transparent;
+    border: 2px solid;
+    color: #cf0b4c;
+    width: 120px;
+    height: 40px;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  form button:hover {
+    background-color: #cf0b4c;
+    color: #fff;
+  }
+</style>
+<div class="main_body_color">
+  <h2
+    class="text-center"
+    style="
+      color: #f8f9fa;
+      font-weight: 500;
+      font-size: 3.5rem;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+    "
+  >
+    Automatic Routine Generator
+  </h2>
+  <div class="container pt-2 pb-2">
+    <main>
+      <div class="signup">
+        <span>Not a member?</span>
+        <button type="button" class="sign-up-btn">Sign Up</button>
+      </div>
+      <div class="login">
+        <span>Already have an account?</span>
+        <button type="button">Login</button>
+      </div>
+
+      <div class="back-layer">
+        <form class="login-form active">
+          <h2 class="login-label">Log In</h2>
+          <input type="email" id="lemail" placeholder="Email" />
+          <input type="password" id="lpassword" placeholder="Password" />
+          <button type="button">Login</button>
+        </form>
+
+        <form class="signup-form">
+          <h2>Sign Up</h2>
+          <input type="text" id="name" placeholder="Name" />
+          <input type="email" id="semail" placeholder="Email" />
+          <input type="password" id="spassword" placeholder="Password" />
+          <button type="button">Sign Up</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  const loginForm = document.querySelector(".login-form");
+  const signupForm = document.querySelector(".signup-form");
+  const loginBtn = document.querySelector(".login button");
+  const signupBtn = document.querySelector(".signup button");
+  const backLayer = document.querySelector(".back-layer");
+
+  signupBtn.addEventListener("click", () => {
+    loginForm.classList.remove("active");
+    signupForm.classList.add("active");
+    backLayer.style.clipPath = "inset(0 0 0 50%)";
+  });
+
+  loginBtn.addEventListener("click", () => {
+    signupForm.classList.remove("active");
+    loginForm.classList.add("active");
+    backLayer.style.clipPath = "";
+  });
+</script>

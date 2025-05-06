@@ -1,0 +1,109 @@
+<!-- This snippet assumes Bootstrap 5 CSS/JS and Icons are loaded -->
+<!-- Assumes parent/body handles overall page centering and background -->
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <!-- Constrain form width -->
+
+        <!-- Title -->
+        <h2
+          class="text-center mb-4"
+          style="
+            color: #f8f9fa;
+            font-weight: 500;
+            font-size: 3rem;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+          "
+        >
+          <!-- Light color for title -->
+          Add New Teacher
+        </h2>
+
+        <!-- Form Start -->
+        <!-- Replace "/courses" and "POST" with your actual route and method -->
+        <form action="/teachers" method="POST">
+          <!-- Course Title -->
+          <div class="mb-3">
+            <label
+              for="teachersName"
+              class="form-label"
+              style="color: #4c1d3d; font-weight: 500"
+              >Teacher's Name</label
+            >
+            <!-- Lighter label color -->
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="teachersName"
+              name="teachersName"
+              placeholder="Enter course title"
+              required
+            />
+          </div>
+
+          <!-- Course Code -->
+          <div class="mb-3">
+            <label
+              for="teachersDesignation"
+              class="form-label"
+              style="color: #4c1d3d; font-weight: 500"
+              >Teacher's Desgination</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="teachersDesignation"
+              name="teachersDesignation"
+              placeholder="Enter course code"
+              required
+            />
+          </div>
+
+          <!-- Course Credit -->
+          <div class="mb-3">
+            <label
+              for="teachersEmail"
+              class="form-label"
+              style="color: #4c1d3d; font-weight: 500"
+              >Teacher's Email</label
+            >
+            <input
+              type="number"
+              step="0.1"
+              class="form-control form-control-lg"
+              id="teachersEmail"
+              name="teachersEmail"
+              placeholder="Enter course credit"
+              required
+            />
+            <!-- Using type="number" is often better for credits -->
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid">
+            <!-- d-grid makes the button full width -->
+            <button
+              type="submit"
+              class="btn btn-lg text-white"
+              style="
+                background-color: #be2bc0;
+                border-color: #be2bc0;
+                padding: 0.75rem 1.25rem;
+              "
+            >
+              <!-- Purple button -->
+              Add Teacher
+            </button>
+          </div>
+        </form>
+        <!-- Form End -->
+      </div>
+      <!-- End Form Column -->
+    </div>
+    <!-- End Centering Row -->
+  </div>
+  <!-- End Container -->
+</div>

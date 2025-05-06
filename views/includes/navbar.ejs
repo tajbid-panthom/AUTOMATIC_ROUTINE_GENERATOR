@@ -1,0 +1,72 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-white py-1 back-primary sticky-top"
+  style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)"
+>
+  <div class="container-fluid">
+    <!-- Brand/Logo -->
+    <a class="navbar-brand" href="/">
+      <img
+        src="/images/Routine_logo.png"
+        alt="Logo"
+        width="60"
+        height="60"
+        class="d-inline-block align-text-top"
+      />
+    </a>
+
+    <!-- Toggler Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavContent"
+      aria-controls="navbarNavContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse navbar_padding" id="navbarNavContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link me-3" href="/coursesList" style="color: #4b0082"
+            >Course List</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link me-lg-4" href="/teachers" style="color: #4b0082"
+            >Teacher List</a
+          >
+        </li>
+      </ul>
+
+      <!-- Login Buttons -->
+      <div class="d-flex">
+        <a
+          href="/admin/login"
+          class="btn text-white btn-admin-login me-3"
+          style="
+            background-color: #be2bc0;
+            border-color: #be2bc0;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+          "
+          >Admin Login</a
+        >
+        <a
+          href="/teacher/login"
+          class="btn text-white btn-teacher-login"
+          style="
+            background-color: #dc586d;
+            border-color: #dc586d;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+          "
+          >Teacher Login</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>

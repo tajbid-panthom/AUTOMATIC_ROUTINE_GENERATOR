@@ -1,0 +1,40 @@
+.main_body_color {
+  background: linear-gradient(to bottom, #eeaeca 0%, #94bbe9 100%);
+  height: 90vh !important;
+}
+.btn-admin-login {
+  background-color: #af40af; /* Purple from image */
+  border-color: #af40af;
+  transition: all 0.5s ease;
+}
+.btn-admin-login:hover {
+  transform: scale(1.1) !important;
+  background-color: #9a359a;
+  border-color: #9a359a;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.555);
+}
+
+.btn-teacher-login {
+  background-color: #d9534f; /* Reddish-pink from image */
+  border-color: #d9534f;
+  transition: all 0.5s ease;
+}
+.btn-teacher-login:hover {
+  background-color: #c9302c; /* Darker red on hover */
+  border-color: #c9302c;
+  transform: scale(1.1) !important;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.555);
+}
+
+.back-primary {
+  background-color: #fbf9f9 !important;
+}
+._btn_padding {
+  padding: 10px 50px 10px 50px;
+  margin-right: 40px;
+  font-size: 1.2rem;
+}
+
+.navbar_padding {
+  padding-right: 40px;
+}

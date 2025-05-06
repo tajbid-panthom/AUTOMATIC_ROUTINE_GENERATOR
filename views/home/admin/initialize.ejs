@@ -1,0 +1,353 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<!-- This snippet assumes Bootstrap 5 CSS/JS and Icons are loaded -->
+<!-- Assumes parent/body handles overall page centering and background -->
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <!-- Title (Outside the white box) -->
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.365);
+      "
+    >
+      <!-- Light color for title -->
+      Enter your term for all the year to initialize the routine
+    </h2>
+
+    <!-- Form Start -->
+    <!-- Replace "/submit-terms" with your actual backend route -->
+    <form action="/assigned-teachers" method="POST">
+      <!-- White Background Container for selections -->
+      <div class="bg-white p-4 p-md-5 rounded shadow-sm mb-5">
+        <!-- 1st Year Row -->
+        <div class="row align-items-center mb-3">
+          <div class="col-lg-5 col-md-6 mb-2 mb-md-0 d-flex align-items-center">
+            <!-- Icon/Text slightly muted -->
+            <i class="fa-solid fa-hashtag me-2 fs-5"></i>
+            <span style="font-size: 1.5rem">Select terms in 1st year ?</span>
+          </div>
+          <div class="col-lg-7 col-md-6 d-flex align-items-center flex-wrap">
+            <!-- Checkbox Group -->
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year1_term1"
+                name="year1_terms[]"
+                value="1"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year1_term1"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i>
+                <!-- Checked Icon -->
+                1st Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year1_term2"
+                name="year1_terms[]"
+                value="2"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year1_term2"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i>
+                <!-- Checked Icon -->
+                2nd Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year1_term3"
+                name="year1_terms[]"
+                value="3"
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year1_term3"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-circle me-1 text-muted"></i>
+                <!-- Unchecked Icon -->
+                3rd Term
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- End 1st Year Row -->
+
+        <!-- 2nd Year Row -->
+        <div class="row align-items-center mb-3">
+          <div class="col-lg-5 col-md-6 mb-2 mb-md-0 d-flex align-items-center">
+            <i class="fa-solid fa-hashtag me-2 fs-5"></i>
+            <span style="font-size: 1.5rem">Select terms in 2nd year ?</span>
+          </div>
+          <div class="col-lg-7 col-md-6 d-flex align-items-center flex-wrap">
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year2_term1"
+                name="year2_terms[]"
+                value="1"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year2_term1"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 1st
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year2_term2"
+                name="year2_terms[]"
+                value="2"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year2_term2"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 2nd
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year2_term3"
+                name="year2_terms[]"
+                value="3"
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year2_term3"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-circle me-1 text-muted"></i> 3rd Term
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- End 2nd Year Row -->
+
+        <!-- 3rd Year Row -->
+        <div class="row align-items-center mb-3">
+          <div class="col-lg-5 col-md-6 mb-2 mb-md-0 d-flex align-items-center">
+            <i class="fa-solid fa-hashtag me-2 fs-5"></i>
+            <span style="font-size: 1.5rem">Select terms in 3rd year ?</span>
+          </div>
+          <div class="col-lg-7 col-md-6 d-flex align-items-center flex-wrap">
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year3_term1"
+                name="year3_terms[]"
+                value="1"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year3_term1"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 1st
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year3_term2"
+                name="year3_terms[]"
+                value="2"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year3_term2"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 2nd
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year3_term3"
+                name="year3_terms[]"
+                value="3"
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year3_term3"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-circle me-1 text-muted"></i> 3rd Term
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- End 3rd Year Row -->
+
+        <!-- 4th Year Row -->
+        <div class="row align-items-center mb-3">
+          <div class="col-lg-5 col-md-6 mb-2 mb-md-0 d-flex align-items-center">
+            <i class="fa-solid fa-hashtag me-2 fs-5"></i>
+            <span style="font-size: 1.5rem">Select terms in 4th year ?</span>
+          </div>
+          <div class="col-lg-7 col-md-6 d-flex align-items-center flex-wrap">
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year4_term1"
+                name="year4_terms[]"
+                value="1"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year4_term1"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 1st
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year4_term2"
+                name="year4_terms[]"
+                value="2"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year4_term2"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 2nd
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="year4_term3"
+                name="year4_terms[]"
+                value="3"
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="year4_term3"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-circle me-1 text-muted"></i> 3rd Term
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- End 4th Year Row -->
+
+        <!-- Master's Row -->
+        <div class="row align-items-center">
+          <!-- Removed mb-3 from last row inside box -->
+          <div class="col-lg-5 col-md-6 mb-2 mb-md-0 d-flex align-items-center">
+            <i class="fa-solid fa-hashtag me-2 fs-5"></i>
+            <span style="font-size: 1.5rem">Select terms in Master's ?</span>
+          </div>
+          <div class="col-lg-7 col-md-6 d-flex align-items-center flex-wrap">
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="masters_term1"
+                name="masters_terms[]"
+                value="1"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="masters_term1"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 1st
+                Term
+              </label>
+            </div>
+            <div class="form-check form-check-inline me-4">
+              <input
+                class="form-check-input d-none"
+                type="checkbox"
+                id="masters_term2"
+                name="masters_terms[]"
+                value="2"
+                checked
+              />
+              <label
+                class="form-check-label d-flex align-items-center"
+                for="masters_term2"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-check-circle-fill me-1 text-success"></i> 2nd
+                Term
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- End Master's Row -->
+      </div>
+      <!-- End White Background Container -->
+
+      <!-- Next Button Row (Outside white box) -->
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button
+            type="submit"
+            class="btn text-white shadow-sm"
+            style="background-color: #34a853; border-color: #34a853"
+          >
+            Next <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Form End -->
+  </div>
+</div>
+<!-- End Container -->
+
+<!-- Add this script for visual icon toggling -->
+<!-- Place before closing </body> or in a separate JS file -->

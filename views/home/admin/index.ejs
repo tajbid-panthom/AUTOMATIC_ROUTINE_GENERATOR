@@ -1,2 +1,101 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<div>Hello world</div>
+<!-- This code snippet assumes Bootstrap 5 CSS and JS, and Bootstrap Icons are already loaded -->
+<!-- It also assumes parent containers or the body handle the overall page centering -->
+<div class="main_body_color">
+  <div class="container text-center pt-5 pb-5">
+    <!-- Added padding top/bottom for spacing -->
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <!-- Title -->
+        <h1
+          style="
+            font-weight: bold;
+            color: #4c1d3d;
+            margin-bottom: 2.5rem;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.813);
+          "
+        >
+          Automated Routine Generator
+        </h1>
+      </div>
+      <!-- Button Container -->
+      <div class="col-12 d-flex justify-content-center">
+        <div style="width: 100%; max-width: 450px">
+          <!-- Button Stack -->
+          <div class="d-grid gap-3">
+            <!-- Create New Routine Button -->
+            <a
+              href="/create-routine"
+              class="btn text-white"
+              style="
+                background-color: #dc586d;
+                border-color: #dc586d;
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                border-radius: 0.75rem;
+                text-align: left;
+              "
+            >
+              <i
+                class="bi bi-calendar-plus"
+                style="
+                  margin-right: 0.8rem;
+                  font-size: 1.2rem;
+                  vertical-align: middle;
+                "
+              ></i>
+              Create New Routine
+            </a>
+            <!-- Course List Button -->
+            <a
+              href="/coursesList"
+              class="btn text-white"
+              style="
+                background-color: #dc586d;
+                border-color: #dc586d;
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                border-radius: 0.75rem;
+                text-align: left;
+              "
+            >
+              <i
+                class="bi bi-list-ul"
+                style="
+                  margin-right: 0.8rem;
+                  font-size: 1.2rem;
+                  vertical-align: middle;
+                "
+              ></i>
+              Course List
+            </a>
+            <!-- Teacher List Button -->
+            <a
+              href="/teachers"
+              class="btn text-white"
+              style="
+                background-color: #dc586d;
+                border-color: #dc586d;
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                border-radius: 0.75rem;
+                text-align: left;
+              "
+            >
+              <i
+                class="bi bi-list-ul"
+                style="
+                  margin-right: 0.8rem;
+                  font-size: 1.2rem;
+                  vertical-align: middle;
+                "
+              ></i>
+              Teacher List
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

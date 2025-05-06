@@ -1,0 +1,219 @@
+<!-- This snippet assumes Bootstrap 5 CSS/JS and Icons are loaded -->
+<!-- Assumes parent/body handles overall page centering and background -->
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="main_body_color">
+  <!-- This snippet assumes Bootstrap 5 CSS/JS and Icons are loaded -->
+  <!-- Assumes parent/body handles overall page centering and background -->
+
+  <div class="container pt-5 pb-5">
+    <!-- Title -->
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+      "
+    >
+      Assigned Teacher's List
+    </h2>
+
+    <!-- Centered Column Wrapper for Filters and List -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-9">
+        <div
+          class="bg-white p-3 rounded shadow-sm mb-4"
+          style="max-height: 400px; overflow-y: auto"
+        >
+          <!-- Course Item START (Repeat this block for each course) -->
+          <!-- Example:  -->
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : Sajib Chatterjee</span>
+                <span class="fw-bold d-block mt-1">Designation : Lecturer</span>
+                <span class="fw-bold d-block mt-1"
+                  >Email : sajib.ku.cse12@gmail.com</span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form action="/course-credit" method="POST">
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #be2bc0;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Add
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Course Item END -->
+          <!-- Example:-->
+
+          <!-- Static Example Item 2 -->
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : Sajib Chatterjee</span>
+                <span class="fw-bold d-block mt-1">Designation : Lecturer</span>
+                <span class="fw-bold d-block mt-1"
+                  >Email : sajib.ku.cse12@gmail.com</span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form
+                action="/assigned-teachers/add/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #be2bc0;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Add
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Static Example Item 3 -->
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : Sajib Chatterjee</span>
+                <span class="fw-bold d-block mt-1">Designation : Lecturer</span>
+                <span class="fw-bold d-block mt-1"
+                  >Email : sajib.ku.cse12@gmail.com</span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form
+                action="/assigned-teachers/add/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #be2bc0;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Add
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : Sajib Chatterjee</span>
+                <span class="fw-bold d-block mt-1">Designation : Lecturer</span>
+                <span class="fw-bold d-block mt-1"
+                  >Email : sajib.ku.cse12@gmail.com</span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form
+                action="/assigned-teachers/add/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #be2bc0;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Add
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/id?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End Course List Container -->
+      </div>
+      <!-- End Centered Column Wrapper -->
+    </div>
+    <!-- End justify-content-center Row -->
+  </div>
+  <!-- End Container -->
+</div>
