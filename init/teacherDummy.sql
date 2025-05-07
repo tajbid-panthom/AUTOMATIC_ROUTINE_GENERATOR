@@ -1,0 +1,16 @@
+INSERT INTO Teacher (name, designation, email, assigned_credit, password) VALUES
+('Dr. Alice Rahman', 'Professor', 'alice.rahman@univ.edu', 9.0, 'hashed_pass_1'),
+('Dr. Zahirul Haque', 'Associate Professor', 'zahirul.haque@univ.edu', 6.0, 'hashed_pass_2'),
+('Ms. Nabila Hossain', 'Assistant Professor', 'nabila.hossain@univ.edu', 7.5, 'hashed_pass_3'),
+('Mr. Kabir Ahmed', 'Lecturer', 'kabir.ahmed@univ.edu', 3.0, 'hashed_pass_4'),
+('Dr. Tamanna Shams', 'Professor', 'tamanna.shams@univ.edu', 10.0, 'hashed_pass_5'),
+('Mr. Arefin Siddique', 'Lecturer', 'arefin.siddique@univ.edu', 4.0, 'hashed_pass_6'),
+('Dr. Nadia Islam', 'Associate Professor', 'nadia.islam@univ.edu', 6.5, 'hashed_pass_7'),
+('Ms. Shamsun Nahar', 'Assistant Professor', 'shamsun.nahar@univ.edu', 5.0, 'hashed_pass_8'),
+('Mr. Tanjim Alam', 'Lecturer', 'tanjim.alam@univ.edu', 2.5, 'hashed_pass_9'),
+('Dr. Rafiq Hasan', 'Professor', 'rafiq.hasan@univ.edu', 9.5, 'hashed_pass_10'),
+('Dr. Lubna Chowdhury', 'Associate Professor', 'lubna.chowdhury@univ.edu', 7.0, 'hashed_pass_11'),
+('Ms. Nayeem Jahan', 'Assistant Professor', 'nayeem.jahan@univ.edu', 6.5, 'hashed_pass_12'),
+('Mr. Mahmudul Hasan', 'Lecturer', 'mahmudul.hasan@univ.edu', 3.5, 'hashed_pass_13'),
+('Dr. Tahmina Rahim', 'Professor', 'tahmina.rahim@univ.edu', 8.5, 'hashed_pass_14'),
+('Mr. Shahriar Kabir', 'Lecturer', 'shahriar.kabir@univ.edu', 4.0, 'hashed_pass_15');

@@ -3,6 +3,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const router = require("./routers/router.js");
+const courseRouter = require("./routers/courseRouter.js");
+const teacherRouter = require("./routers/teacherRouter.js");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -15,6 +17,8 @@ app.use(express.static("public"));
 app.engine("ejs", ejsMate);
 
 app.use(router);
+app.use(courseRouter);
+app.use(teacherRouter);
 
 const port = process.env.PORT || 8080;
 app.listen(port, (req, res) => {

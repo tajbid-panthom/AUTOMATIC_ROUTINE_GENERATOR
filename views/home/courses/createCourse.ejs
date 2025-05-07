@@ -1,14 +1,9 @@
-<!-- This snippet assumes Bootstrap 5 CSS/JS and Icons are loaded -->
-<!-- Assumes parent/body handles overall page centering and background -->
 <% layout("/layouts/boilerplate.ejs") %>
 
 <div class="main_body_color">
   <div class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-7 col-xl-6">
-        <!-- Constrain form width -->
-
-        <!-- Title -->
         <h2
           class="text-center mb-4"
           style="
@@ -18,14 +13,10 @@
             text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
           "
         >
-          <!-- Light color for title -->
           Add New Course
         </h2>
 
-        <!-- Form Start -->
-        <!-- Replace "/courses" and "POST" with your actual route and method -->
-        <form action="/courses" method="POST">
-          <!-- Course Title -->
+        <form action="/add-course" method="POST">
           <div class="mb-3">
             <label
               for="courseTitle"
@@ -33,18 +24,16 @@
               style="color: #4c1d3d; font-weight: 500"
               >Course Title</label
             >
-            <!-- Lighter label color -->
             <input
               type="text"
               class="form-control form-control-lg"
               id="courseTitle"
-              name="courseTitle"
+              name="course_title"
               placeholder="Enter course title"
               required
             />
           </div>
 
-          <!-- Course Code -->
           <div class="mb-3">
             <label
               for="courseCode"
@@ -56,13 +45,12 @@
               type="text"
               class="form-control form-control-lg"
               id="courseCode"
-              name="courseCode"
+              name="course_code"
               placeholder="Enter course code"
               required
             />
           </div>
 
-          <!-- Course Credit -->
           <div class="mb-3">
             <label
               for="courseCredit"
@@ -75,16 +63,13 @@
               step="0.1"
               class="form-control form-control-lg"
               id="courseCredit"
-              name="courseCredit"
+              name="credit"
               placeholder="Enter course credit"
               required
             />
-            <!-- Using type="number" is often better for credits -->
           </div>
 
-          <!-- Year and Term Row -->
           <div class="row g-3 mb-4">
-            <!-- g-3 adds gutter spacing -->
             <div class="col-md-6">
               <label
                 for="courseYear"
@@ -95,16 +80,15 @@
               <select
                 class="form-select form-select-lg"
                 id="courseYear"
-                name="courseYear"
+                name="year"
                 required
               >
                 <option value="" selected disabled>Enter year</option>
-                <!-- Placeholder Option -->
                 <option value="1">1st Year</option>
                 <option value="2">2nd Year</option>
                 <option value="3">3rd Year</option>
                 <option value="4">4th Year</option>
-                <option value="masters">Master's</option>
+                <option value="5">Master's</option>
               </select>
             </div>
             <div class="col-md-6">
@@ -117,21 +101,18 @@
               <select
                 class="form-select form-select-lg"
                 id="courseTerm"
-                name="courseTerm"
+                name="term"
                 required
               >
                 <option value="" selected disabled>Enter term</option>
-                <!-- Placeholder Option -->
-                <option value="1">1st Term</option>
-                <option value="2">2nd Term</option>
-                <option value="3">3rd Term</option>
+                <option value="1st">1st Term</option>
+                <option value="2nd">2nd Term</option>
+                <option value="3rd">3rd Term</option>
               </select>
             </div>
           </div>
 
-          <!-- Submit Button -->
           <div class="d-grid">
-            <!-- d-grid makes the button full width -->
             <button
               type="submit"
               class="btn btn-lg text-white"
@@ -141,16 +122,11 @@
                 padding: 0.75rem 1.25rem;
               "
             >
-              <!-- Purple button -->
               Add Course
             </button>
           </div>
         </form>
-        <!-- Form End -->
       </div>
-      <!-- End Form Column -->
     </div>
-    <!-- End Centering Row -->
   </div>
-  <!-- End Container -->
 </div>

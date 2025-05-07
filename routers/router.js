@@ -1,6 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2");
 const router = express.Router();
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "Tajbid01",
+  database: "ARG",
+});
 
 router.get("/", (req, res) => {
   res.render("home/admin/index.ejs");
@@ -8,21 +14,14 @@ router.get("/", (req, res) => {
 router.get("/create-routine", (req, res) => {
   res.render("home/admin/initialize.ejs");
 });
-router.get("/coursesList", (req, res) => {
-  res.render("home/admin/coursesList.ejs");
-});
-router.get("/courses/new", (req, res) => {
-  res.render("home/admin/createCourse.ejs");
-});
-router.get("/teachers", (req, res) => {
-  res.render("home/admin/teachersList.ejs");
-});
-router.get("/teachers/new", (req, res) => {
-  res.render("home/admin/createTeacher.ejs");
-});
+
 router.get("/assigned-teachers-list", (req, res) => {
   res.render("home/admin/assignedTeachersList.ejs");
 });
+router.post("/assigned-teachers-list", (req, res) => {
+  res.redirect("/assigned-teachers-list");
+});
+
 router.get("/admin/login", (req, res) => {
   res.render("home/admin/login.ejs");
 });

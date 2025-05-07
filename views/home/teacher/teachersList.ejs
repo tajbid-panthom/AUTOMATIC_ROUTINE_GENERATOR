@@ -1,0 +1,154 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+      "
+    >
+      Teacher's List
+    </h2>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-9">
+        <div class="row justify-content-start mb-4 g-3">
+          <div class="col-sm-6">
+            <select
+              id="selectDesignation"
+              class="form-select form-select-lg"
+              aria-label="Select Designation"
+              style="background-color: #f8f9fa"
+            >
+              <option selected disabled>Enter Your Designation</option>
+              <option value="Professor">Professor</option>
+              <option value="Associate Professor">Associate Professor</option>
+              <option value="Assistant Professor">Assistant Professor</option>
+              <option value="lecturer">Lecturer</option>
+            </select>
+          </div>
+        </div>
+        <div
+          id="teacherContainer"
+          class="bg-white p-3 rounded shadow-sm mb-4"
+          style="max-height: 400px; overflow-y: auto"
+        >
+          <% for(let teacher of teachers){ %>
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : <%=teacher.name %></span>
+                <span class="fw-bold d-block mt-1"
+                  >Designation : <%=teacher.designation %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Email : <%=teacher.email %></span
+                >
+              </div>
+            </div>
+            <form
+              action="/teachers/delete/<%= teacher.teacher_id%>?_method=DELETE"
+              method="POST"
+              class="ms-3"
+            >
+              <button
+                type="submit"
+                class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+          <% } %>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a
+              href="/teachers/new"
+              role="button"
+              class="btn text-white shadow-sm"
+              style="
+                background-color: #be2bc0;
+                border-color: #be2bc0;
+                padding: 0.6rem 1.5rem;
+              "
+            >
+              ADD NEW
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const selectDesignation = document.getElementById("selectDesignation");
+  const teacherContainer = document.getElementById("teacherContainer");
+
+  async function fetchTeachers() {
+    const designation = selectDesignation.value;
+
+    try {
+      teacherContainer.innerHTML = `<div class="text-center text-secondary">Loading courses...</div>`;
+      const response = await fetch(
+        `/teachers/filter?designation=${designation}`
+      );
+      const teachers = await response.json();
+
+      if (!teachers.length) {
+        teacherContainer.innerHTML = `<div class="text-center text-muted">No courses found.</div>`;
+        return;
+      }
+
+      teacherContainer.innerHTML = teachers
+        .map(
+          (teacher) => `
+        <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block">Name : ${teacher.name} </span>
+                <span class="fw-bold d-block mt-1"
+                  >Designation : ${teacher.designation}</span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Email : ${teacher.email}</span
+                >
+              </div>
+            </div>
+            <form
+              action="/teachers/delete/${teacher.teacher_id}?_method=DELETE"
+              method="POST"
+              class="ms-3"
+            >
+              <button
+                type="submit"
+                class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+      `
+        )
+        .join("");
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+      teacherContainer.innerHTML = `<div class="text-danger text-center">Something went wrong. Please try again.</div>`;
+    }
+  }
+
+  selectDesignation.addEventListener("change", fetchTeachers);
+</script>

@@ -1,0 +1,158 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+      "
+    >
+      Course List
+    </h2>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-9">
+        <div class="row justify-content-center mb-4 g-3">
+          <div class="col-sm-6">
+            <select
+              id="yearSelect"
+              class="form-select form-select-lg"
+              aria-label="Select Year"
+              style="background-color: #f8f9fa"
+            >
+              <option value="" disabled selected>Enter Your Year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+              <option value="5">Master's</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <select
+              id="termSelect"
+              class="form-select form-select-lg"
+              aria-label="Select Term"
+              style="background-color: #f8f9fa"
+            >
+              <option selected disabled value="">Enter Your Term</option>
+              <option value="1st">1st Term</option>
+              <option value="2nd">2nd Term</option>
+              <option value="3rd">3rd Term</option>
+            </select>
+          </div>
+        </div>
+        <div
+          id="courseContainer"
+          class="bg-white p-3 rounded shadow-sm mb-4"
+          style="max-height: 400px; overflow-y: auto"
+        >
+          <% for(let course of courses) {%>
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block"
+                  >Title : <%=course.course_title %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Course Code : <%=course.course_code %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Course Credit : <%=course.credit %></span
+                >
+              </div>
+            </div>
+            <form
+              action="/courses/delete/<%=course.course_id %>?_method=DELETE"
+              method="POST"
+              class="ms-3"
+            >
+              <button
+                type="submit"
+                class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+          <% } %>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a
+              href="/courses/new"
+              role="button"
+              class="btn text-white shadow-sm"
+              style="
+                background-color: #be2bc0;
+                border-color: #be2bc0;
+                padding: 0.6rem 1.5rem;
+              "
+            >
+              ADD NEW
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- JavaScript for AJAX Filtering -->
+<script>
+  const yearSelect = document.getElementById("yearSelect");
+  const termSelect = document.getElementById("termSelect");
+  const courseContainer = document.getElementById("courseContainer");
+
+  async function fetchCourses() {
+    const year = yearSelect.value;
+    const term = termSelect.value;
+    if (!year && !term) return;
+
+    try {
+      courseContainer.innerHTML = `<div class="text-center text-secondary">Loading courses...</div>`;
+      const response = await fetch(`/courses/filter?year=${year}&term=${term}`);
+      const courses = await response.json();
+
+      if (!courses.length) {
+        courseContainer.innerHTML = `<div class="text-center text-muted">No courses found.</div>`;
+        return;
+      }
+
+      courseContainer.innerHTML = courses
+        .map(
+          (course) => `
+        <div class="d-flex align-items-center justify-content-between p-1 rounded mb-3" style="background-color: #dc586d; color: white">
+          <div class="d-flex align-items-center ms-4">
+            <i class="bi bi-mortarboard fs-3 me-3"></i>
+            <div class="ms-2">
+              <span class="fw-bold d-block">Title : ${course.course_title}</span>
+              <span class="fw-bold d-block mt-1">Course Code : ${course.course_code}</span>
+              <span class="fw-bold d-block mt-1">Course Credit : ${course.credit}</span>
+            </div>
+          </div>
+          <form action="/courses/delete/${course.course_id}?_method=DELETE" method="POST" class="ms-3">
+            <button type="submit" class="btn btn-light btn-sm text-danger border border-secondary">
+              Delete
+            </button>
+          </form>
+        </div>
+      `
+        )
+        .join("");
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+      courseContainer.innerHTML = `<div class="text-danger text-center">Something went wrong. Please try again.</div>`;
+    }
+  }
+
+  yearSelect.addEventListener("change", fetchCourses);
+  termSelect.addEventListener("change", fetchCourses);
+</script>
