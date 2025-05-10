@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %>
+
 <div class="main_body_color">
   <div class="container pt-5 pb-5">
     <h2
@@ -21,83 +22,70 @@
         text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.595);
       "
     >
-      Sajib Chatterjee
+      <%= teacher.name %>
     </h2>
-    <!-- Assumes Bootstrap 5 CSS and JS are loaded -->
 
     <style>
-      /* Custom styling for the dropdown trigger buttons */
       .btn-time-select {
-        background-color: #dc586d; /* Pinkish-red color */
+        background-color: #dc586d;
         color: white;
         border: none;
-        border-radius: 0.75rem; /* Adjust rounding */
-        padding: 0.6rem 1rem; /* Adjust padding */
+        border-radius: 0.75rem;
+        padding: 0.6rem 1rem;
         font-weight: bold;
-        /* font-size: 1.1rem; /* Adjust font size */
-        /* text-transform: uppercase; */ /* Removed uppercase for Start/End Time */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%; /* Make it take available width */
+        width: 100%;
         text-align: left;
-        /* Ensure Bootstrap arrow is white */
-        --bs-btn-color: white;
-        --bs-btn-active-color: white;
-        min-height: 48px; /* Ensure consistent height, adjust as needed */
+        min-height: 48px;
       }
 
       .btn-time-select:hover,
       .btn-time-select:focus,
       .btn-time-select:active {
-        background-color: #dc586d; /* Slightly darker shade */
+        background-color: #dc586d;
         color: white;
         box-shadow: none;
-        --bs-btn-hover-color: white;
-        --bs-btn-focus-color: white;
       }
 
-      /* Style Bootstrap's default dropdown arrow */
       .btn-time-select.dropdown-toggle::after {
         border-top-color: white;
         margin-left: 0.5em;
       }
 
-      /* Optional: Style the dropdown menu to match width/rounding */
       .time-dropdown-menu {
-        width: 100%; /* Make menu match button width */
+        width: 100%;
         border-radius: 0.75rem;
         margin-top: 0.25rem;
       }
 
-      /* Styling for the Add button */
       .btn-add-time {
-        background-color: #af40af; /* Purple color */
+        background-color: #af40af;
         border-color: #af40af;
         color: white;
         font-weight: bold;
         border-radius: 0.75rem;
-        padding: 0.6rem 2.5rem; /* Adjust padding */
-        /* font-size: 1.1rem; */ /* Optional font size adjust */
+        padding: 0.6rem 2.5rem;
       }
+
       .btn-add-time:hover {
-        background-color: #9a359a; /* Darker purple */
+        background-color: #9a359a;
         border-color: #9a359a;
         color: white;
       }
     </style>
 
-    <!-- White Box Container -->
     <div class="bg-white p-4 p-md-5 rounded shadow-sm text-center">
-      <!-- Inner Title -->
       <h4 class="mb-4 fw-bold" style="color: #343a40">Add Day & Time</h4>
-
-      <!-- Form Start -->
-      <!-- Replace action/method with your actual endpoint -->
       <form action="/add-preferred-time" method="POST">
-        <!-- Dropdowns Row -->
         <div class="row justify-content-center g-3 mb-4">
-          <!-- Day Dropdown -->
+          <!-- Day Selection -->
+          <input
+            type="hidden"
+            name="teacher_id"
+            value="<%=teacher.teacher_id %>"
+          />
           <div class="col-sm-6 col-md-4">
             <div class="dropdown">
               <button
@@ -108,54 +96,25 @@
                 aria-expanded="false"
               >
                 DAY
-                <!-- Default Text -->
               </button>
               <ul
                 class="dropdown-menu time-dropdown-menu"
                 aria-labelledby="dayDropdownButton"
               >
+                <% ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+                'Thursday'].forEach(day => { %>
                 <li>
-                  <a class="dropdown-item" href="#" data-value="Monday"
-                    >Monday</a
+                  <a class="dropdown-item" href="#" data-value="<%= day %>"
+                    ><%= day %></a
                   >
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Tuesday"
-                    >Tuesday</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Wednesday"
-                    >Wednesday</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Thursday"
-                    >Thursday</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Friday"
-                    >Friday</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Saturday"
-                    >Saturday</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="Sunday"
-                    >Sunday</a
-                  >
-                </li>
+                <% }); %>
               </ul>
               <input type="hidden" id="selectedDayValue" name="day" required />
-              <!-- Required makes selection mandatory -->
             </div>
           </div>
 
-          <!-- Start Time Dropdown -->
+          <!-- Start Time -->
           <div class="col-sm-6 col-md-4">
             <div class="dropdown">
               <button
@@ -166,40 +125,30 @@
                 aria-expanded="false"
               >
                 Start Time
-                <!-- Default Text -->
               </button>
               <ul
                 class="dropdown-menu time-dropdown-menu"
                 aria-labelledby="startTimeDropdownButton"
               >
-                <!-- Add time options here -->
+                <% ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '2:00 PM',
+                '3:00 PM', '4:00 PM'].forEach(time => { %>
                 <li>
-                  <a class="dropdown-item" href="#" data-value="08:00"
-                    >08:00 AM</a
+                  <a class="dropdown-item" href="#" data-value="<%= time %>"
+                    ><%= time %></a
                   >
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="09:00"
-                    >09:00 AM</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="10:00"
-                    >10:00 AM</a
-                  >
-                </li>
-                <!-- ... more options -->
+                <% }); %>
               </ul>
               <input
                 type="hidden"
                 id="selectedStartTimeValue"
-                name="startTime"
+                name="start_time"
                 required
               />
             </div>
           </div>
 
-          <!-- End Time Dropdown -->
+          <!-- End Time -->
           <div class="col-sm-6 col-md-4">
             <div class="dropdown">
               <button
@@ -210,94 +159,70 @@
                 aria-expanded="false"
               >
                 End Time
-                <!-- Default Text -->
               </button>
               <ul
                 class="dropdown-menu time-dropdown-menu"
                 aria-labelledby="endTimeDropdownButton"
               >
-                <!-- Add time options here -->
+                <% ['10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '3:00 PM',
+                '4:00 PM', '5:00 PM'].forEach(time => { %>
                 <li>
-                  <a class="dropdown-item" href="#" data-value="13:00"
-                    >01:00 PM</a
+                  <a class="dropdown-item" href="#" data-value="<%= time %>"
+                    ><%= time %></a
                   >
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="15:00"
-                    >03:00 PM</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="16:00"
-                    >04:00 PM</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" data-value="17:00"
-                    >05:00 PM</a
-                  >
-                </li>
-                <!-- ... more options -->
+                <% }); %>
               </ul>
               <input
                 type="hidden"
                 id="selectedEndTimeValue"
-                name="endTime"
+                name="end_time"
                 required
               />
             </div>
           </div>
         </div>
-        <!-- End Dropdowns Row -->
 
-        <!-- Add Button -->
         <div>
           <button type="submit" class="btn btn-add-time btn-lg">Add</button>
         </div>
       </form>
-      <!-- Form End -->
     </div>
-    <!-- End White Box -->
-
-    <!-- JavaScript to make dropdowns update button text and hidden inputs -->
   </div>
 </div>
+
 <script>
   function setupDropdown(buttonId, hiddenInputId) {
     const button = document.getElementById(buttonId);
     const hiddenInput = document.getElementById(hiddenInputId);
-    // Find the menu associated with the button
     const menuItems = document.querySelectorAll(
       `.dropdown-menu[aria-labelledby="${buttonId}"] .dropdown-item`
     );
 
     if (!button || !hiddenInput || !menuItems.length) {
       console.error("Dropdown elements not found for:", buttonId);
-      return; // Exit if elements aren't found
+      return;
     }
 
     menuItems.forEach((item) => {
       item.addEventListener("click", function (event) {
-        event.preventDefault(); // Stop link navigation
+        event.preventDefault();
 
         const selectedText = this.textContent;
         const selectedValue = this.getAttribute("data-value");
 
-        // Update button text - keep uppercase for DAY, normal for others
         button.textContent =
-          button.id === "dayDropdownButton"
+          buttonId === "dayDropdownButton"
             ? selectedText.toUpperCase()
             : selectedText;
-        hiddenInput.value = selectedValue; // Update hidden input value
+        hiddenInput.value = selectedValue;
 
-        // Optional: Remove active class from siblings and add to current
         menuItems.forEach((i) => i.classList.remove("active"));
         this.classList.add("active");
       });
     });
   }
 
-  // Setup each dropdown
   setupDropdown("dayDropdownButton", "selectedDayValue");
   setupDropdown("startTimeDropdownButton", "selectedStartTimeValue");
   setupDropdown("endTimeDropdownButton", "selectedEndTimeValue");

@@ -7,7 +7,9 @@ CREATE TABLE Course (
     term VARCHAR(10),
     isSessional BOOLEAN GENERATED ALWAYS AS (
         RIGHT(course_code, 1) IN ('0', '2', '4', '6', '8')
-    ) STORED
+    ) STORED,
+    teacher_id int default null,
+  FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id) ON DELETE cascade
 )engine=InnoDB;
 
 CREATE TABLE Teacher (
@@ -30,3 +32,21 @@ CREATE TABLE Teacher (
 
     CHECK (assigned_credit >= 0)
 ) ENGINE = InnoDB;
+
+
+CREATE TABLE Preferred_Time (
+  preferred_time_id INT PRIMARY KEY AUTO_INCREMENT,
+  teacher_id INT NOT NULL,
+  day ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+  start_time VARCHAR(30) NOT NULL,
+  end_time VARCHAR(30) NOT NULL,
+  FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id) ON DELETE CASCADE
+)ENGINE = InnoDB;
+CREATE TABLE Teacher_Courses (
+
+    teacher_id INT,
+    course_id INT,
+    PRIMARY KEY (teacher_id, course_id),
+    FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id),
+    FOREIGN KEY (course_id) REFERENCES Course(course_id)
+)ENGINE = InnoDB;

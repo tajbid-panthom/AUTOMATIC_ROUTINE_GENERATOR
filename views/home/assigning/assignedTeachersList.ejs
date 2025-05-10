@@ -1,0 +1,144 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+      "
+    >
+      Assigned Teacher's List
+    </h2>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-9">
+        <div
+          class="bg-white p-3 rounded shadow-sm mb-4"
+          style="max-height: 400px; overflow-y: auto"
+        >
+          <% for(let teacher_course of teacher_courses) {%>
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block"
+                  >Name : <%= teacher_course.name %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Designation : <%=teacher_course.designation %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Email : <%=teacher_course.email %></span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form
+                action="/course-credit/<%=teacher_course.teacher_id %>"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #be2bc0;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Add
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/<%=teacher_course.teacher_id %>"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+          <%} %> <% for(let teacher_course of teacher_courses2) {%>
+          <div
+            class="d-flex align-items-center justify-content-between p-1 rounded mb-3"
+            style="background-color: #dc586d; color: white"
+          >
+            <div class="d-flex align-items-center ms-4">
+              <i class="bi bi-mortarboard fs-3 me-3"></i>
+              <div class="ms-2">
+                <span class="fw-bold d-block"
+                  >Name : <%= teacher_course.name %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Designation : <%=teacher_course.designation %></span
+                >
+                <span class="fw-bold d-block mt-1"
+                  >Email : <%=teacher_course.email %></span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center ms-4">
+              <form
+                action="/show-time/<%=teacher_course.teacher_id %>"
+                method="GET"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm _btn_padding"
+                  style="
+                    background-color: #2cd416;
+                    border-color: #fff;
+                    color: #fff;
+                  "
+                >
+                  Edit
+                </button>
+              </form>
+              <form
+                action="/assigned-teachers/request/<%=teacher_course.teacher_id %>"
+                method="POST"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-light btn-sm text-danger border border-secondary _btn_padding"
+                >
+                  Request
+                </button>
+              </form>
+            </div>
+          </div>
+          <%} %>
+        </div>
+      </div>
+      <% if(submit==1){ %>
+      <div class="d-flex justify-content-center align-items-center gap-3 p-4">
+        <form action="/download" method="GET">
+          <button
+            type="submit"
+            class="btn btn-lg fw-bold text-white shadow-sm"
+            style="
+              background-color: #0056b3;
+              border-color: #0056b3;
+              border-radius: 0.75rem;
+              padding: 0.6rem 2rem;
+            "
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

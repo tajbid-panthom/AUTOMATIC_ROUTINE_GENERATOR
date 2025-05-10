@@ -1,0 +1,177 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  .content-box {
+    border-radius: 0.85rem; /* Slightly more rounding for outer boxes */
+    background-color: white;
+    height: 100%; /* Make columns try to be same height */
+  }
+  .inner-pink-box {
+    border-radius: 0.6rem; /* Rounding for inner pink boxes */
+    background-color: #dc586d; /* Pinkish-red color */
+    color: white;
+  }
+  .scrollable-list {
+    /* Adjust height as needed, maybe make it relative or calculate */
+    /* Let's use viewport height units for an example */
+    max-height: calc(
+      70vh - 100px
+    ); /* Example: Calculate based on viewport, minus padding/margins */
+    min-height: 200px; /* Ensure minimum height */
+    overflow-y: auto;
+    padding-right: 0.5rem; /* Space for scrollbar */
+  }
+  /* Optional: Scrollbar styling */
+  .scrollable-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollable-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .scrollable-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+  .scrollable-list::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+  }
+
+  /* Small white button/badge for Day */
+  .day-badge {
+    background-color: white;
+    color: #dc586d; /* Pink text */
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 1px solid #ddd; /* Optional subtle border */
+  }
+  /* Delete button */
+  .btn-delete-time {
+    background: none;
+    border: none;
+    color: white;
+    padding: 0 0.3rem; /* Minimal padding */
+    line-height: 1; /* Prevent extra height */
+  }
+  .btn-delete-time:hover {
+    opacity: 0.8;
+  }
+</style>
+<div class="main_body_color">
+  <div class="container pt-5 pb-2">
+    <h2
+      class="text-center mb-1"
+      style="
+        color: #f8f9fa;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.595);
+      "
+    >
+      Add Preferred Time
+    </h2>
+    <h2
+      class="text-center"
+      style="
+        color: #4c1d3d;
+        font-weight: 500;
+        font-size: 2.5rem;
+        text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.595);
+      "
+    >
+      <%= teacherCourses[0].name %>
+    </h2>
+
+    <div class="container py-2">
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-7">
+          <div class="content-box p-3 shadow-sm h-100">
+            <div class="course-list-scroll">
+              <% for(let teacherCourse of teacherCourses) {%>
+              <div
+                class="d-flex align-items-center p-3 rounded mb-3 inner-pink-box"
+              >
+                <i class="bi bi-mortarboard fs-3 me-3"></i>
+                <div>
+                  <span class="fw-bold d-block"
+                    >Title : <%=teacherCourse.course_title %>
+                  </span>
+                  <span class="fw-bold d-block mt-1"
+                    >Course Code : <%=teacherCourse.course_code %></span
+                  >
+                  <span class="fw-bold d-block mt-1"
+                    >Course Credit : <%=teacherCourse.credit %></span
+                  >
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-flex flex-column">
+          <div class="content-box p-3 shadow-sm flex-grow-1">
+            <div class="scrollable-list">
+              <% for(let time of times) {%>
+              <div
+                class="d-flex align-items-center justify-content-between p-3 rounded mb-3 inner-pink-box"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-clock-history fs-4 me-3"></i>
+                  <span class="day-badge me-3"><%=time.day %></span>
+                  <span class="fw-bold">Time :</span
+                  ><span class="ms-1"
+                    ><%= time.start_time %> - <%=time.end_time %></span
+                  >
+                </div>
+                <form
+                  action="/preferred-time/delete/<%= time.preferred_time_id%>?_method=DELETE"
+                  method="POST"
+                >
+                  <button
+                    type="submit"
+                    class="btn-delete-time"
+                    aria-label="Delete Time"
+                  >
+                    <i class="bi bi-x-circle-fill fs-5"></i>
+                  </button>
+                </form>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center gap-3 p-4">
+      <a href="/add-time/<%=teacherCourses[0].teacher_id %>">
+        <button
+          type="button"
+          class="btn btn-lg fw-bold text-white shadow-sm"
+          style="
+            background-color: #af40af;
+            border-color: #af40af;
+            border-radius: 0.75rem;
+            padding: 0.6rem 1.5rem;
+          "
+        >
+          Add Preferred Time
+        </button></a
+      >
+      <form action="/assigned-teachers-list" method="GET">
+        <button
+          type="submit"
+          class="btn btn-lg fw-bold text-white shadow-sm"
+          style="
+            background-color: #0056b3;
+            border-color: #0056b3;
+            border-radius: 0.75rem;
+            padding: 0.6rem 2rem;
+          "
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

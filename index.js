@@ -5,6 +5,8 @@ const ejsMate = require("ejs-mate");
 const router = require("./routers/router.js");
 const courseRouter = require("./routers/courseRouter.js");
 const teacherRouter = require("./routers/teacherRouter.js");
+const assigningRouter = require("./routers/assigningRouter.js");
+const creditTimeRouter = require("./routers/creditTimeRouter.js");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,8 @@ app.engine("ejs", ejsMate);
 app.use(router);
 app.use(courseRouter);
 app.use(teacherRouter);
+app.use(assigningRouter);
+app.use(creditTimeRouter);
 
 const port = process.env.PORT || 8080;
 app.listen(port, (req, res) => {

@@ -1,0 +1,124 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="main_body_color">
+  <div class="container pt-5 pb-5">
+    <h2
+      class="text-center mb-4"
+      style="
+        color: #4c1d3d;
+        font-weight: 500;
+        font-size: 3rem;
+        text-shadow: 1px 2px 4px rgba(255, 255, 255, 0.595);
+      "
+    >
+      Assigned Teacher for your course
+    </h2>
+    <form
+      action="<%= course_len > 1 ? '/assign-teacher' : '/assigned-teachers-list'%>"
+      method="POST"
+    >
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-9">
+          <div class="row justify-content-center mb-4 g-3">
+            <div class="col-sm-6">
+              <h3
+                style="
+                  background-color: #f8f9fa;
+                  padding: 7px 0 7px 30px;
+                  border-radius: 5px;
+                  color: #4c1d3d;
+                  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+                  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+                "
+              >
+                <%=year %>
+              </h3>
+            </div>
+            <div class="col-sm-6">
+              <h3
+                style="
+                  background-color: #f8f9fa;
+                  padding: 7px 0 7px 30px;
+                  border-radius: 5px;
+                  color: #4c1d3d;
+                  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+                  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+                "
+              >
+                <%=term %> term
+              </h3>
+            </div>
+          </div>
+
+          <div
+            class="bg-white p-3 rounded shadow-sm mb-4"
+            style="max-height: 400px; overflow-y: auto"
+          >
+            <div
+              class="d-grid gap-3"
+              style="grid-template-columns: repeat(3, 1fr)"
+            >
+              <% courses.forEach((course, index) => { %>
+              <div
+                class="p-2 rounded"
+                style="background-color: #dc586d; color: white"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-mortarboard fs-3 me-3"></i>
+                  <div>
+                    <span class="fw-bold d-block"
+                      ><%= course.course_title %></span
+                    >
+                    <span class="fw-bold d-block mt-1"
+                      ><%= course.course_code %></span
+                    >
+
+                    <!-- Structured course & teacher inputs -->
+                    <input
+                      type="hidden"
+                      name="courses[<%= index %>][course_id]"
+                      value="<%= course.course_id %>"
+                    />
+
+                    <select
+                      name="courses[<%= index %>][teacher_id]"
+                      class="form-select form-select-lg mt-1"
+                      style="background-color: #f8f9fa"
+                      required
+                    >
+                      <option selected disabled>Assign Teacher</option>
+                      <% for(let teacher of teachers) { %>
+                      <option value="<%= teacher.teacher_id %>">
+                        <%= teacher.name %>
+                      </option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+          <button
+            class="btn text-white shadow-sm"
+            style="background-color: #003dc0; border-color: #003dc0"
+          >
+            <i class="bi bi-arrow-left"></i> Previous
+          </button>
+
+          <button
+            type="submit"
+            class="btn text-white shadow-sm"
+            style="background-color: #34a853; border-color: #34a853"
+          >
+            Next <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
