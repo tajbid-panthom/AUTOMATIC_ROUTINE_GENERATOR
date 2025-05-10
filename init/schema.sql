@@ -3,7 +3,7 @@ CREATE TABLE Course (
     course_title VARCHAR(100),
     course_code VARCHAR(20) NOT NULL,
     credit DECIMAL(3,1),
-    year INT,
+    year VARCHAR(20),
     term VARCHAR(10),
     isSessional BOOLEAN GENERATED ALWAYS AS (
         RIGHT(course_code, 1) IN ('0', '2', '4', '6', '8')

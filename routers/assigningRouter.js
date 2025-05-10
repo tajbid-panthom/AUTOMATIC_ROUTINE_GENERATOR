@@ -35,11 +35,11 @@ assigningRouter.post("/assign-teachers", (req, res) => {
   }
 
   let years_terms = {
-    1: year1_terms,
-    2: year2_terms,
-    3: year3_terms,
-    4: year4_terms,
-    5: masters_terms,
+    "1st year": year1_terms,
+    "2nd Year": year2_terms,
+    "3rd Year": year3_terms,
+    "4th Year": year4_terms,
+    "Master's": masters_terms,
   };
   for (let key in years_terms) {
     const arr = years_terms[key];
@@ -61,7 +61,7 @@ assigningRouter.post("/assign-teachers", (req, res) => {
   }
 
   shared.years_terms = years_terms;
-  let qc = `select * from Course where year = ${year} and term = '${term}';`;
+  let qc = `select * from Course where year = '${year}' and term = '${term}';`;
   let qt = `select * from Teacher;`;
   try {
     connection.query(qc, (err1, courses) => {
@@ -119,7 +119,7 @@ assigningRouter.get("/assign-teachers", (req, res) => {
     break;
   }
   shared.years_terms = years_terms;
-  let qc = `select * from Course where year = ${year} and term = '${term}';`;
+  let qc = `select * from Course where year = '${year}' and term = '${term}';`;
   let qt = `select * from Teacher;`;
   try {
     connection.query(qc, (err1, courses) => {
