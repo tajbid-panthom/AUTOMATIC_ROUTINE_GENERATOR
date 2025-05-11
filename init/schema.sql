@@ -50,3 +50,9 @@ CREATE TABLE Teacher_Courses (
     FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id),
     FOREIGN KEY (course_id) REFERENCES Course(course_id)
 )ENGINE = InnoDB;
+
+CREATE TABLE YearTerm (
+  year_term_id INT AUTO_INCREMENT NOT NULL,
+  year VARCHAR(20),
+  PRIMARY KEY (year_term_id)
+) ENGINE=InnoDB;

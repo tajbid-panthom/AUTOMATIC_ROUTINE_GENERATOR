@@ -1,16 +1,21 @@
-INSERT INTO Teacher (name, designation, email, assigned_credit, password) VALUES
-('Dr. Alice Rahman', 'Professor', 'alice.rahman@univ.edu', 9.0, 'hashed_pass_1'),
-('Dr. Zahirul Haque', 'Associate Professor', 'zahirul.haque@univ.edu', 6.0, 'hashed_pass_2'),
-('Ms. Nabila Hossain', 'Assistant Professor', 'nabila.hossain@univ.edu', 7.5, 'hashed_pass_3'),
-('Mr. Kabir Ahmed', 'Lecturer', 'kabir.ahmed@univ.edu', 3.0, 'hashed_pass_4'),
-('Dr. Tamanna Shams', 'Professor', 'tamanna.shams@univ.edu', 10.0, 'hashed_pass_5'),
-('Mr. Arefin Siddique', 'Lecturer', 'arefin.siddique@univ.edu', 4.0, 'hashed_pass_6'),
-('Dr. Nadia Islam', 'Associate Professor', 'nadia.islam@univ.edu', 6.5, 'hashed_pass_7'),
-('Ms. Shamsun Nahar', 'Assistant Professor', 'shamsun.nahar@univ.edu', 5.0, 'hashed_pass_8'),
-('Mr. Tanjim Alam', 'Lecturer', 'tanjim.alam@univ.edu', 2.5, 'hashed_pass_9'),
-('Dr. Rafiq Hasan', 'Professor', 'rafiq.hasan@univ.edu', 9.5, 'hashed_pass_10'),
-('Dr. Lubna Chowdhury', 'Associate Professor', 'lubna.chowdhury@univ.edu', 7.0, 'hashed_pass_11'),
-('Ms. Nayeem Jahan', 'Assistant Professor', 'nayeem.jahan@univ.edu', 6.5, 'hashed_pass_12'),
-('Mr. Mahmudul Hasan', 'Lecturer', 'mahmudul.hasan@univ.edu', 3.5, 'hashed_pass_13'),
-('Dr. Tahmina Rahim', 'Professor', 'tahmina.rahim@univ.edu', 8.5, 'hashed_pass_14'),
-('Mr. Shahriar Kabir', 'Lecturer', 'shahriar.kabir@univ.edu', 4.0, 'hashed_pass_15');
+INSERT INTO Teacher (name, designation, email)
+VALUES 
+('Prof. MAR', 'Professor', 'mar@university.edu'),
+('Prof. KHT', 'Professor', 'kht@university.edu'),
+('Prof. RD', 'Professor', 'rd@university.edu'),
+('Prof. SMRH', 'Professor', 'smrh@university.edu'),
+('Prof. GMAR', 'Professor', 'gmar@university.edu'),
+('Prof. ASMA', 'Professor', 'asma@university.edu'),
+('Prof. AKB', 'Professor', 'akb@university.edu'),
+('Prof. KMA', 'Professor', 'kma@university.edu'),
+('Prof. SAH', 'Professor', 'sah@university.edu'),
+
+('Asso. Prof. MM', 'Associate Professor', 'mm@university.edu'),
+('Asso. Prof. AKM', 'Associate Professor', 'akm@university.edu'),
+
+('Asst. Prof. AS', 'Assistant Professor', 'as@university.edu'),
+('Asst. Prof. AI', 'Assistant Professor', 'ai@university.edu'),
+
+('Lecturer FTP', 'Lecturer', 'ftp@university.edu'),
+('Lecturer SC', 'Lecturer', 'sc@university.edu'),
+('Lecturer MFS', 'Lecturer', 'mfs@university.edu');

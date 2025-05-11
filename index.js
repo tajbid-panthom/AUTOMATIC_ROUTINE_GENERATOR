@@ -5,7 +5,7 @@ const ejsMate = require("ejs-mate");
 const router = require("./routers/router.js");
 const courseRouter = require("./routers/courseRouter.js");
 const teacherRouter = require("./routers/teacherRouter.js");
-const assigningRouter = require("./routers/assigningRouter.js");
+const { assigningRouter } = require("./routers/assigningRouter.js");
 const creditTimeRouter = require("./routers/creditTimeRouter.js");
 const app = express();
 

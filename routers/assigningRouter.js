@@ -13,6 +13,7 @@ assigningRouter.use((_, res, next) => {
   res.locals.years_terms = shared.years_terms;
   next();
 });
+let yearTerm;
 
 //route to the assign page
 assigningRouter.post("/assign-teachers", (req, res) => {
@@ -33,14 +34,14 @@ assigningRouter.post("/assign-teachers", (req, res) => {
   if (masters_terms[masters_terms.length - 1] === "none") {
     masters_terms.pop();
   }
-
   let years_terms = {
-    "1st year": year1_terms,
+    "1st Year": year1_terms,
     "2nd Year": year2_terms,
     "3rd Year": year3_terms,
     "4th Year": year4_terms,
     "Master's": masters_terms,
   };
+
   for (let key in years_terms) {
     const arr = years_terms[key];
     if (!Array.isArray(arr) || arr.length === 0) {
@@ -63,12 +64,26 @@ assigningRouter.post("/assign-teachers", (req, res) => {
   shared.years_terms = years_terms;
   let qc = `select * from Course where year = '${year}' and term = '${term}';`;
   let qt = `select * from Teacher;`;
+  let q;
+
   try {
     connection.query(qc, (err1, courses) => {
       if (err1) throw err1;
       try {
         connection.query(qt, (err2, teachers) => {
           if (err2) throw err2;
+          for (let key of Object.keys(years_terms)) {
+            for (let value of years_terms[key]) {
+              q = `insert into YearTerm (year) values ("${key}(${value})");`;
+              try {
+                connection.query(q, (err, _) => {
+                  if (err) throw err;
+                });
+              } catch (error3) {
+                console.log(error3);
+              }
+            }
+          }
           res.render("home/assigning/assignedTeacher.ejs", {
             courses,
             teachers,
@@ -218,4 +233,4 @@ assigningRouter.post("/assign-teacher", (req, res) => {
   res.redirect("/assign-teachers");
 });
 
-module.exports = assigningRouter;
+module.exports = { assigningRouter };
